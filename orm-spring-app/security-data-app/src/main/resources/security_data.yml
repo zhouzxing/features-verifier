@@ -1,0 +1,19 @@
+# 安全策略配置文件
+data_classification:
+  pci_data:
+    - credit_card_number
+    - cvv
+    - track_data
+    storage: "禁止存储"
+
+  pii_data:
+    - national_id
+    - passport_number
+    - phone_number
+    storage: "可脱敏存储"
+
+  sensitive_data:
+    - email
+    - address
+    - birth_date
+    storage: "加密存储"

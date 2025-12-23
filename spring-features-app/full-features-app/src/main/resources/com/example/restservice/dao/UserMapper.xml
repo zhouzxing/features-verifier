@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.restservice.dao.UserMapper">
+
+    <insert id="insertOrUpdatePrimaryKey">
+        insert into sys_user (id,name,age,email) values
+        <foreach item="item" index="index" collection="users" separator=",">
+            (#{item.id},#{item.name},#{item.age},#{item.email})
+        </foreach>
+        on duplicate key update name = values(name), age = values(age), email = 'primary@email.com'
+    </insert>
+
+    <!-- 验证name,age冲突：修改id,email   -->
+    <insert id="insertOrUpdateUniqueKey">
+        insert into sys_user (id,name,age,email) values
+        <foreach item="item" index="index" collection="users" separator=",">
+            (#{item.id},#{item.name},#{item.age},#{item.email})
+        </foreach>
+        on duplicate key update id = values(id),email = 'unique@email.com'
+    </insert>
+
+
+</mapper>

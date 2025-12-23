@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="30">
+    <Appenders>
+        <!-- 控制台输出器 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- 文件输出器，使用随机读写，性能更好 -->
+        <RandomAccessFile name="RandomAccessFile" fileName="logs/app_log4j2_trace.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </RandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- 你自己的包使用 DEBUG 级别 -->
+        <Logger name="com.example.restservice.controller" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RandomAccessFile"/>
+        </Logger>
+
+        <!-- 根日志记录器 -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RandomAccessFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

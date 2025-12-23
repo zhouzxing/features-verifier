@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_PATH">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 开发环境：彩色控制台 -->
+        <SpringProfile name="dev | local">
+            <Console name="Console" target="SYSTEM_OUT">
+                <PatternLayout pattern="%style{%d{HH:mm:ss.SSS}}{bright,yellow} [%t] %highlight{%-5level} %style{%logger{36}}{bright,blue} - %msg%n"/>
+            </Console>
+        </SpringProfile>
+
+        <!-- 生产环境：文件输出 -->
+        <SpringProfile name="prod | staging">
+            <RandomAccessFile name="File" fileName="${LOG_PATH}/app.log" immediateFlush="false">
+                <PatternLayout pattern="${LOG_PATTERN}"/>
+            </RandomAccessFile>
+        </SpringProfile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.yourcompany" level="DEBUG"/>
+        <Root level="INFO">
+            <SpringProfile name="dev | local">
+                <AppenderRef ref="Console"/>
+            </SpringProfile>
+            <SpringProfile name="prod | staging">
+                <AppenderRef ref="File"/>
+            </SpringProfile>
+        </Root>
+    </Loggers>
+</Configuration>
