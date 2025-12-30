@@ -49,12 +49,22 @@ public class BigAmountAspect {
         return null;
     }
 
-//    @After("@annotation(bigAmount)")
-    @Before("@annotation(bigAmount)")
+    @After("@annotation(bigAmount)")
     public Object afterBigAmount(JoinPoint joinPoint, BigAmount bigAmount) throws Throwable {
+
 
         return null;
     }
+
+
+
+    @After("@annotation(BigAmount)")
+    public Object after(JoinPoint joinPoint) throws Throwable {
+
+        return null;
+    }
+
+
 
     @Before("@annotation(bigAmount)")
     public Object before(JoinPoint joinPoint, BigAmount bigAmount) throws Throwable {

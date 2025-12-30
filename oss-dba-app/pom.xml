@@ -13,9 +13,8 @@
     <name>oss-dba-app</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>oss-cli-app</module>
-        <module>oss-server-app</module>
-        <module>file-cli-app</module>
+        <module>storage-server-app</module>
+        <module>storage-sdk-app</module>
     </modules>
 
     <properties>

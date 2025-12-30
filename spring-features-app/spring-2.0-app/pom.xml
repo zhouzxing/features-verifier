@@ -3,19 +3,36 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.geeker</groupId>
-        <artifactId>oss-dba-app</artifactId>
+        <artifactId>spring-features-app</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>oss-cli-app</artifactId>
+    <artifactId>spring-2.0-app</artifactId>
     <packaging>jar</packaging>
 
-    <name>oss-cli-app</name>
+    <description>
+        主要验证注解特性：
+            - @Around(@annotation(name)) : name 不支持问题
+    </description>
+
+    <name>interceptor-aop-app</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <version>2.7.10</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -24,11 +41,7 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
-            <version>5.6.155</version>
-        </dependency>
+
 
     </dependencies>
 </project>

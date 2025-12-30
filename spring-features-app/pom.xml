@@ -18,6 +18,7 @@
         <module>servelet-filter-app</module>
         <module>spring-mvc-app</module>
         <module>full-features-app</module>
+        <module>spring-2.0-app</module>
     </modules>
 
     <properties>
